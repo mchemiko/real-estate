@@ -7,9 +7,73 @@
 </head>
 
 <body>
-    <p>Welcome to
-        <%= message %>
-    </p>
+<center>
+    <p>Welcome to the best site of comparing houses</p>
+	
+	
+	<form method = "get" action = "/process">
+		<div class = "row">
+		
+			<div class ="col-xs-8 col-sm-9">
+			<input type = "text" class = "form-control" name ="lbcUrl" placeholder ="https://www.leboncoin.fr">
+			</div>
+			<section class="gradient">
+			<div class = "col-xs-4 col-sm-3">
+				<button type = "submit"> Tell me </button>
+			</div>
+			</section>
+		</div>
+	</form>
+	
+	<%if (error == "No error") { %>
+	
+	<%if (data.deal.good) { %>
+	<p> Good deal </p>
+	<p><%=data.lbcData.price%></p>
+	
+	<%} else {%>
+
+	<p> Bad deal</p>
+	
+	<form id="form1">
+      <div class="divTable">
+             <div class="headRow">
+                <div class="divCell" align="center">House details</div>
+             </div>
+            <div class="divRow">
+                  <div class="divCell"><%=data.lbcData.price%></div>
+            </div>
+			
+           <div class="divRow">
+                  <div class="divCell"><%=data.lbcData.city%></div>
+				  
+            </div>
+			<div class="divRow">
+                  <div class="divCell"><%=data.lbcData.postalCode%></div>
+				  
+            </div>
+			<div class="divRow">
+                  <div class="divCell"><%=data.lbcData.type%></div>
+            </div>
+			
+			
+			 <div class="divRow">
+                  <div class="divCell"><%=data.lbcData.surface%></div>
+            </div> 
+			</div>
+
+      </div>
+  </form>
+		</center>
+
+	<%}%>
+	
+	<%}else{%>
+	
+	<%=error%>
+	
+	<%}%>
+	
 </body>
 
 </html>
